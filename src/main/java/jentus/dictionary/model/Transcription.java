@@ -1,9 +1,12 @@
 package jentus.dictionary.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Entity
 @Table(name = "Transcription")
@@ -17,16 +20,16 @@ public class Transcription {
     @Column(name = "value")
     private String value;
 
-    //@JsonIgnoreProperties(value = {"hibernateLazyInitializer"}) //"applications",
-    @ManyToOne(targetEntity = Expression.class,fetch = FetchType.EAGER)
-    @JoinColumn(name = "expressionId")
-    private Expression expression;
+    @ManyToOne(targetEntity = Card.class)
+    @JoinColumn(name = "cardId")
+    @JsonIgnore
+    private Card card;
 
-    @ManyToOne(targetEntity = TranscriptionVariant.class,fetch = FetchType.EAGER)
-    @JoinColumn(name = "transcriptionVariantId")
-    private TranscriptionVariant transcriptionVariant;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "variant")
+    private TranscriptionVariant variant;
 
-    @ManyToOne(targetEntity = FileTable.class,fetch = FetchType.LAZY)
-    @JoinColumn(name = "fileId")
-    private FileTable soundFile;
+    @Column(name = "fileId")
+    @Type(type = "pg-uuid")
+    private UUID fileId;
 }

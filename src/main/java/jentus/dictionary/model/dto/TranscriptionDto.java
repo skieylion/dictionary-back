@@ -1,5 +1,6 @@
 package jentus.dictionary.model.dto;
 
+import jentus.dictionary.model.TranscriptionVariant;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,5 +8,6 @@ import lombok.Setter;
 @Setter
 public class TranscriptionDto {
     private String value;
-    private String variant;
+    private TranscriptionVariant variant;
+    private String fileId;
 }

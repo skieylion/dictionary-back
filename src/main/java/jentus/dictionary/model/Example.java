@@ -19,8 +19,8 @@ public class Example {
     @Column(name = "text")
     private String text;
 
-    @ManyToOne(targetEntity = Context.class)
-    @JoinColumn(name = "contextId")
+    @ManyToOne(targetEntity = Card.class)
+    @JoinColumn(name = "cardId")
     @JsonIgnore
-    private Context context;
+    private Card card;
 }
