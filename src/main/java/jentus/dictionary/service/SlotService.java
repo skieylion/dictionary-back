@@ -9,4 +9,5 @@ import java.util.List;
 public interface SlotService {
     List<Slot> findAll();
     void save(SlotDto slotDto);
+    void delete(long slotId);
 }

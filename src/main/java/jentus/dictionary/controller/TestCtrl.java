@@ -20,6 +20,6 @@ public class TestCtrl {
     @GetMapping("/test")
     public void test() {
         String photoId = UUID.randomUUID().toString();
-        fileRepository.upload(photoId, "asdfasdf".getBytes(StandardCharsets.UTF_8));
+        //fileRepository.upload(photoId, "asdfasdf".getBytes(StandardCharsets.UTF_8));
     }
 }

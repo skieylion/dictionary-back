@@ -8,6 +8,14 @@ import java.util.List;
 
 public interface CardService {
     void save(CardWriterDto cardWriterDto);
+
     List<Card> getAllBySlotId(Long slotId, Pageable pageable);
+
     Card getCardById(Long cardId);
+
+    List<Card> getStudentCardsBySlotId(Long slotId, int limit);
+
+    void repeatCard(Long cardId);
+
+    void deleteCard(Long cardId);
 }

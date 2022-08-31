@@ -28,4 +28,10 @@ public class SlotCtrl {
         slotService.save(slotDto);
     }
 
+    @DeleteMapping("/slots/{id}")
+    public void deleteSlot(
+            @PathVariable("id") long slotId
+    ) {
+        slotService.delete(slotId);
+    }
 }

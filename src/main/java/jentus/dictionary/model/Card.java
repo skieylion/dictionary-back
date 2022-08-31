@@ -33,11 +33,11 @@ public class Card {
     private Set<Example> examples = new HashSet<>();
     @OneToMany(targetEntity = Transcription.class, mappedBy = "card", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Transcription> transcriptions = new HashSet<>();
-    @ManyToMany(targetEntity = Slot.class, fetch = FetchType.LAZY)
+    @ManyToMany(targetEntity = Slot.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(
-            name = "CardAndCardList",
+            name = "CardAndSlot",
             joinColumns = @JoinColumn(name = "cardId"),
-            inverseJoinColumns = @JoinColumn(name = "cardListId")
+            inverseJoinColumns = @JoinColumn(name = "slotId")
     )
     private Set<Slot> slots = new HashSet<>();
     @Column(name = "state")

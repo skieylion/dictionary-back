@@ -13,7 +13,7 @@ public class CardWriterDto {
     private String translate;
     private List<TranscriptionDto> transcriptionList;
     private List<String> exampleList;
-    private List<Long> cardListIds;
+    private List<Long> slotIds;
 
     @Override
     public String toString() {
@@ -25,7 +25,7 @@ public class CardWriterDto {
                 ", translate='" + translate + '\'' +
                 ", transcriptionList=" + transcriptionList +
                 ", exampleList=" + exampleList +
-                ", cardListIds=" + cardListIds +
+                ", slotIds=" + slotIds +
                 '}';
     }
 }

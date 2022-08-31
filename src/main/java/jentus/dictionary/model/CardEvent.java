@@ -1,6 +1,7 @@
 package jentus.dictionary.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,6 +24,7 @@ public class CardEvent implements Comparable<CardEvent> {
 
     @ManyToOne(targetEntity = Card.class, fetch = FetchType.EAGER)
     @JoinColumn(name = "cardId")
+    @JsonIgnore
     private Card card;
 
     @Override

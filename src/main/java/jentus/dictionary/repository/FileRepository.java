@@ -1,21 +1,21 @@
 package jentus.dictionary.repository;
 
-import feign.Headers;
-import jentus.dictionary.config.HttpConfig;
-import jentus.dictionary.model.Search;
-import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
+import jentus.dictionary.model.FileS3;
+import org.springframework.web.multipart.MultipartFile;
 
-@FeignClient(
-        url = "http://localhost:8082",
-        value = "fileRepository",
-        configuration = HttpConfig.class
-)
+import java.io.IOException;
+import java.util.List;
+
 public interface FileRepository {
-    @PostMapping("/Files")
-    @Headers("Content-Type: multipart/form-data")
-    Search upload(@RequestParam("fileId") String fileId, @RequestPart("file") byte[] bytes);
+//    @PostMapping("/Files")
+//    @Headers("Content-Type: multipart/form-data")
+//    Search upload(@RequestParam("fileId") String fileId, @RequestPart("file") byte[] bytes);
+//
+//    @DeleteMapping("/Files/{fileId}")
+//    void delete(@PathVariable("fileId") String fileId);
 
+    void save(String fileId, MultipartFile multipartFile) throws IOException;
+    FileS3 get(String fileId) throws IOException;
+    void delete(String fileId);
+    List<String> getAll() throws IOException;
 }

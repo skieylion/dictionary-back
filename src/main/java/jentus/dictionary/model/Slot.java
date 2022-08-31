@@ -1,15 +1,16 @@
 package jentus.dictionary.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
-@Table(name = "cardlist")
+@Table(name = "slot")
 @Data
 public class Slot {
     @Id
@@ -21,6 +22,9 @@ public class Slot {
 
     @Column(name = "description")
     private String description;
+
+    @Type(type = "pg-uuid")
+    private UUID fileId;
 
     @ManyToMany(mappedBy = "slots", fetch = FetchType.LAZY)
     @JsonIgnore

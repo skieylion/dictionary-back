@@ -6,7 +6,7 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "cardandcardlist")
+@Table(name = "cardandslot")
 @Getter
 @Setter
 public class CardAndSlot {
@@ -19,6 +19,6 @@ public class CardAndSlot {
     private Card card;
 
     @ManyToOne(targetEntity = Slot.class, fetch = FetchType.EAGER)
-    @JoinColumn(name = "cardListId")
+    @JoinColumn(name = "slotId")
     private Slot slot;
 }
