@@ -1,7 +1,10 @@
 package jentus.dictionary.repository;
 
 import jentus.dictionary.model.Slot;
+import jentus.dictionary.model.SlotStat;
+import org.hibernate.annotations.NamedNativeQuery;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

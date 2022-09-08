@@ -1,11 +1,13 @@
 package jentus.dictionary.repository;
 
 import jentus.dictionary.model.FileS3;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
 
+@Repository
 public interface FileRepository {
 //    @PostMapping("/Files")
 //    @Headers("Content-Type: multipart/form-data")

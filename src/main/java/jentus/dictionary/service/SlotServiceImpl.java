@@ -3,11 +3,11 @@ package jentus.dictionary.service;
 import jentus.dictionary.exception.SlotNotFoundException;
 import jentus.dictionary.model.Card;
 import jentus.dictionary.model.Slot;
+import jentus.dictionary.model.SlotStat;
 import jentus.dictionary.model.dto.SlotDto;
-import jentus.dictionary.repository.CardAndSlotRepository;
-import jentus.dictionary.repository.CardRepository;
-import jentus.dictionary.repository.FileRepository;
-import jentus.dictionary.repository.SlotRepository;
+import jentus.dictionary.repository.*;
+import jentus.dictionary.repository.batis.SlotStatRepository;
+import jentus.dictionary.service.mapper.SlotMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,11 +24,15 @@ public class SlotServiceImpl implements SlotService {
     private final CardService cardService;
     private final CardAndSlotRepository cardAndSlotRepository;
     private final FileRepository fileRepository;
+    private final SlotMapper slotMapper;
+    private final SlotStatRepository slotStatRepository;
 
     @Override
     @Transactional(readOnly = true)
-    public List<Slot> findAll() {
-        return slotRepository.findAll();
+    public List<SlotDto> findAll() {
+        List<Slot> slotList = slotRepository.findAll();
+        List<SlotStat> slotStatList = slotStatRepository.getSlotStat();
+        return slotMapper.convert(slotList, slotStatList);
     }
 
     @Override

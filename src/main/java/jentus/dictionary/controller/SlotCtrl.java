@@ -19,7 +19,7 @@ public class SlotCtrl {
     private final SlotService slotService;
 
     @GetMapping("/slots")
-    public List<Slot> findAllWithoutCards() {
+    public List<SlotDto> findAllWithoutCards() {
         return slotService.findAll();
     }
 
