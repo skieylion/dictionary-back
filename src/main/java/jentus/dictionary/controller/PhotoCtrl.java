@@ -1,6 +1,7 @@
 package jentus.dictionary.controller;
 
 import jentus.dictionary.exception.FileUploadException;
+import jentus.dictionary.model.dto.FileDto;
 import jentus.dictionary.service.FileLoaderService;
 import jentus.dictionary.service.PhotoService;
 import lombok.AllArgsConstructor;
@@ -21,7 +22,7 @@ public class PhotoCtrl {
     private final PhotoService photoService;
     private final FileLoaderService fileLoaderService;
 
-    private String getFormat(String url) {
+    private String format(String url) {
         MultiValueMap<String, String> params = UriComponentsBuilder.fromUriString(url).build().getQueryParams();
         return "." + params.getFirst("fm");
     }
@@ -32,7 +33,7 @@ public class PhotoCtrl {
     }
 
     @GetMapping("loader/photo")
-    public ResponseEntity<String> download(@RequestParam("url") String url) throws FileUploadException {
-        return fileLoaderService.download(url, getFormat(url));
+    public ResponseEntity<FileDto> download(@RequestParam("url") String url) throws FileUploadException {
+        return fileLoaderService.download("photo", format(url), url);
     }
 }

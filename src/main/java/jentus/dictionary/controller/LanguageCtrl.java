@@ -1,6 +1,8 @@
 package jentus.dictionary.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import jentus.dictionary.model.Entry;
+import jentus.dictionary.model.NameValuePair;
 import jentus.dictionary.model.dto.EntryDto;
 import jentus.dictionary.service.LanguageService;
 import lombok.AllArgsConstructor;
@@ -20,7 +22,12 @@ public class LanguageCtrl {
     private final LanguageService languageService;
 
     @GetMapping("/entries")
-    public List<EntryDto> entries(@RequestParam("query") String query) {
-        return languageService.find(query);
+    public List<EntryDto> entries(@RequestParam("wordId") String wordId) throws JsonProcessingException {
+        return languageService.getEntries(wordId);
+    }
+
+    @GetMapping("/search")
+    public List<NameValuePair> search(@RequestParam("query") String query) throws JsonProcessingException {
+        return languageService.lookFor(query);
     }
 }

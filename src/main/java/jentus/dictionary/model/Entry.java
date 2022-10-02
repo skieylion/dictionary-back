@@ -1,10 +1,12 @@
 package jentus.dictionary.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import java.util.List;
 
 @Data
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Entry {
     private String id;
     private Metadata metadata;
@@ -12,6 +14,7 @@ public class Entry {
     private String word;
 
     @Data
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Metadata {
         private String operation;
         private String provider;
@@ -19,6 +22,7 @@ public class Entry {
     }
 
     @Data
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Result {
         private String id;
         private String language;
@@ -28,29 +32,34 @@ public class Entry {
     }
 
     @Data
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class KeyText {
         private String id;
         private String text;
     }
 
     @Data
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Text {
         private String text;
     }
 
     @Data
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class LanguageText {
         private String language;
         private String text;
     }
 
     @Data
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class ThesaurusLink {
         private String entry_id;
         private String sense_id;
     }
 
     @Data
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class GrammaticalFeature {
         private String id;
         private String text;
@@ -58,6 +67,7 @@ public class Entry {
     }
 
     @Data
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Pronunciation {
         private String audioFile;
         private List<String> dialects;
@@ -66,6 +76,7 @@ public class Entry {
     }
 
     @Data
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class LexicalEntry {
         private List<SubEntry> entries;
         private String language;
@@ -76,6 +87,7 @@ public class Entry {
     }
 
     @Data
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class SubSense {
         private List<String> definitions;
         private List<Text> examples;
@@ -87,6 +99,7 @@ public class Entry {
     }
 
     @Data
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Sense {
         private List<String> definitions;
         private List<Text> examples;
@@ -99,12 +112,11 @@ public class Entry {
     }
 
     @Data
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public static class SubEntry {
         private List<String> etymologies;
         private List<GrammaticalFeature> grammaticalFeatures;
         private List<Pronunciation> pronunciations;
         private List<Sense> senses;
     }
-
-
 }
